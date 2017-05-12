@@ -1,7 +1,6 @@
 package goversion
 
 import (
-	"flag"
 	"fmt"
 	"os"
 )
@@ -9,14 +8,13 @@ import (
 var version string = "dev"
 
 func init() {
-	b := flag.Bool("version", false, "application verison")
-	flag.Parse()
-	if *b {
+	if len(os.Args) == 2 && os.Args[1] == "-version" {
 		fmt.Println(version)
 		os.Exit(0)
 	}
 }
 
 func Version() string {
+
 	return version
 }
